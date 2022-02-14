@@ -9,7 +9,26 @@ function updateProduct(product, price, isIncrease) {
   input.value = producInputNumber;
   const productPrice = document.getElementById(product + "_price");
   productPrice.innerText = producInputNumber * price;
+  calculation();
 }
+// get input value fucntion
+function geInputValue(product) {
+  const productInput = document.getElementById(product + "_Number");
+  const inputNumber = parseInt(productInput.value);
+  return inputNumber;
+}
+function calculation() {
+  const phonePirce = geInputValue("phone") * 1219;
+  const casePirce = geInputValue("case") * 59;
+  const subTotal = phonePirce + casePirce;
+  const taxTotal = subTotal / 10;
+  const total_Price = subTotal + taxTotal;
+
+  document.getElementById("sub_Total").innerText = subTotal;
+  document.getElementById("tax_total").innerText = taxTotal;
+  document.getElementById("total_Price").innerText = total_Price;
+}
+
 //update phone price
 document.getElementById("phone_Plus").addEventListener("click", function () {
   updateProduct("phone", 1219, true);
